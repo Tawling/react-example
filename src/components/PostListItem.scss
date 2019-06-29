@@ -1,0 +1,30 @@
+.post-list-item {
+    margin: 10px 0;
+    border: 1px solid black;
+    border-radius: 5px;
+    
+    .post-title {
+        font-size: 1.5em;
+        font-weight: bold;
+        color: rgb(26, 35, 85);
+        cursor: pointer;
+    }
+
+    .post-body {
+        border: 1px dashed black;
+        border-radius: 5px;
+        padding: 5px;
+        margin: 5px;
+        overflow: hidden;
+    }
+
+    &.collapsed {
+        .post-body {
+            height: 0px;
+        }
+
+        .post-title {
+            color: black;
+        }
+    }
+}

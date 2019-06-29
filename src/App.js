@@ -1,26 +1,47 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React from 'react'
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+import './App.scss' 
+import PostList from './components/PostList'
+
+class App extends React.Component {
+
+    state = {
+        page: 1,
+    }
+
+    handleNextPage = () => {
+        this.setState({
+            page: this.state.page + 1,
+        })
+    }
+
+    handlePreviousPage = () => {
+        this.setState({
+            page: this.state.page - 1,
+        })
+    }
+
+    render() {
+        const { page } = this.state
+        return (
+            <div className="app">
+                <div className="buttons">
+                    <button
+                        type="button"
+                        onClick={this.handlePreviousPage}>
+                        Previous Page
+                    </button>
+                    <div>{page}</div>
+                    <button
+                        type="button"
+                        onClick={this.handleNextPage}>
+                        Next Page
+                    </button>
+                </div>
+                <PostList page={page} />
+            </div>
+        )
+    }
 }
 
-export default App;
+export default App
